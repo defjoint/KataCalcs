@@ -24,11 +24,12 @@ public class Main {
                 break;
             case '-':
                 operations = '-';
+                break;
             case '*':
-                operations = '-';
+                operations = '*';
                 break;
             case '/':
-                operations = '-';
+                operations = '/';
                 break;
             default:
                 operations = '&';
@@ -42,11 +43,11 @@ public class Main {
             if(result < 1) {
                 throw new NumberFormatException("Результат отрицательный, попробуйте повторно выполнить рассчет.");
             }
-            return intToRoman(getSumm(romanToInteger(num1), romanToInteger(num2), operations));
+            return intToRoman(result);
         } else return " " + getSumm(Integer.parseInt(num1), Integer.parseInt(num2), operations);
     }
     public static int getSumm(int x1, int x2, char oper) {
-        if (x1 > 10 || x2 > 10 || x1 < 0 || x2 < 0) {
+        if ((x1 < 1 || x1 > 10) || (x2 < 1 || x2 > 10)) {
             throw new NumberFormatException("Калькулятор умеет работать только целыми числами от 1 до 10");
         }
         int result = 0;
@@ -61,10 +62,9 @@ public class Main {
                  result = x1 * x2;
                 break;
             case '/':
-                result = x1 - x2;
+                result = x1 / x2;
                 break;
             default:
-                result = 0;
                 break;
         }
         return result;
@@ -106,3 +106,4 @@ public class Main {
         return roman.toString();
     }
     }
+
